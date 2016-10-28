@@ -7,5 +7,6 @@ target 'Twitter' do
 
   # Pods for Twitter
   pod 'AFNetworking', '~> 2.5'
+  pod 'BDBOAuth1Manager'
 
 end
