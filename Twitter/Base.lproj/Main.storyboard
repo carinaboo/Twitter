@@ -6,10 +6,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Twitter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="Twitter" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -17,11 +17,48 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UBO-EO-GF2">
+                                <color key="backgroundColor" red="0.11372549019607843" green="0.55686274509803924" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="YFu-v3-15T"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Log in with Twitter">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onLoginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zTw-8G-rBP"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Twitter Bird" translatesAutoresizingMaskIntoConstraints="NO" id="cqF-Qr-Xec"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitterly" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c0M-1N-cRQ">
+                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                <color key="textColor" red="0.11372549019607843" green="0.55686274509803924" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="UBO-EO-GF2" firstAttribute="top" relation="greaterThanOrEqual" secondItem="c0M-1N-cRQ" secondAttribute="bottom" constant="10" id="0D6-XZ-8AV"/>
+                            <constraint firstAttribute="trailing" secondItem="c0M-1N-cRQ" secondAttribute="trailing" constant="30" id="9DZ-uW-Tgw"/>
+                            <constraint firstItem="cqF-Qr-Xec" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="IfH-yP-Ddh"/>
+                            <constraint firstItem="c0M-1N-cRQ" firstAttribute="top" secondItem="cqF-Qr-Xec" secondAttribute="bottom" constant="10" id="Lht-7T-kkg"/>
+                            <constraint firstItem="UBO-EO-GF2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="30" id="PWV-we-uG4"/>
+                            <constraint firstAttribute="trailing" secondItem="UBO-EO-GF2" secondAttribute="trailing" constant="30" id="YZA-zu-qrS"/>
+                            <constraint firstItem="c0M-1N-cRQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="30" id="a9E-Gh-kY0"/>
+                            <constraint firstItem="cqF-Qr-Xec" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="30" id="gwF-m2-804"/>
+                            <constraint firstAttribute="trailing" secondItem="cqF-Qr-Xec" secondAttribute="trailing" constant="30" id="uFR-CK-BU5"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="UBO-EO-GF2" secondAttribute="bottom" constant="45" id="zLe-At-RwW"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="118.29085457271366"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Twitter Bird" width="155" height="155"/>
+    </resources>
 </document>
