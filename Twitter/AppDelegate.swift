@@ -66,6 +66,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }, failure: { (task: URLSessionDataTask?, error: Error) in
                 print("error: \(error.localizedDescription)")
             })
+            
+            // Go to Home screen
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "HomeNavigationViewController") as! UINavigationController
+            self.window!.rootViewController = vc
+            
         }, failure: { (error: Error?) in
             print("error: \(error?.localizedDescription)")
         })
