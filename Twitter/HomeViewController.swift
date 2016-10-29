@@ -10,7 +10,7 @@ import UIKit
 
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var tweets: [String]? = ["hi there 1", "oh hello from the 2 other sides", "woot woot 3"]
+    var tweets: [Tweet]?
     
     @IBOutlet weak var tableView: UITableView!
 
@@ -23,6 +23,14 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
+        
+        // Get initial tweets
+        TwitterClient.sharedInstance.homeTimeline(success: { (tweets: [Tweet]) in
+            self.tweets = tweets
+            self.tableView.reloadData()
+        }, failure: { (error:Error) in
+            print("error: \(error.localizedDescription)")
+        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,7 +47,12 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
         
         if let tweet = tweets?[indexPath.row] {
-            cell.messageLabel.text = tweet
+            if let profileImageURL = tweet.creator?.profileURL {
+                cell.profileImageView.setImageWith(profileImageURL)
+            }
+            cell.nameLabel.text = tweet.creator?.name
+            cell.userNameLabel.text = tweet.creator?.screenname
+            cell.messageLabel.text = tweet.text
         }
         
         return cell

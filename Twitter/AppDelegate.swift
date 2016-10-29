@@ -46,35 +46,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("\(url.description)")
         
         let requestToken = BDBOAuth1Credential(queryString: url.query)
-        let twitterClient = BDBOAuth1SessionManager(baseURL: URL(string: "https://api.twitter.com"), consumerKey: TwitterApp.consumerKey, consumerSecret: TwitterApp.consumerSecret)
         
-        twitterClient?.fetchAccessToken(withPath: "oauth/access_token", method: "POST", requestToken: requestToken, success: { (accessToken: BDBOAuth1Credential?) in
+        TwitterClient.sharedInstance.fetchAccessToken(withPath: "oauth/access_token", method: "POST", requestToken: requestToken, success: { (accessToken: BDBOAuth1Credential?) in
             print("I got the access token!")
             
-            twitterClient?.get("1.1/account/verify_credentials.json", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
-                let userDictionary = response as! NSDictionary
-//                print("user: \(user)")
-                let user = User(userDictionary)
-                
-                print("name: \(user.name)")
-                print("screen_name: \(user.screenname)")
-                print("profile_image_url_https: \(user.profileURL)")
-                print("description: \(user.tagline)")
-                
-            }, failure: { (task: URLSessionDataTask?, error: Error) in
-                print("error: \(error.localizedDescription)")
+            TwitterClient.sharedInstance.currentAccount(success: { (user: User) in
+                print("yay!")
+            }, failure: { (error: Error) in
+                print("oh no!")
             })
            
-            twitterClient?.get("1.1/statuses/home_timeline.json", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
-                let dictionaries = response as! [NSDictionary]
-                
-                let tweets = Tweet.tweets(from: dictionaries)
-                
-                for tweet in tweets {
-                    print("\(tweet.creator?.name): \(tweet.text)")
-                }
-            }, failure: { (task: URLSessionDataTask?, error: Error) in
-                print("error: \(error.localizedDescription)")
+            TwitterClient.sharedInstance.homeTimeline(success: { (tweets: [Tweet]) in
+                print("yay timeline!")
+            }, failure: { (error:Error) in
+                print("oh no timeline!")
             })
             
             // Go to Home screen
