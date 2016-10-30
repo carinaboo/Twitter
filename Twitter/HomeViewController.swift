@@ -64,12 +64,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
         
         if let tweet = tweets?[indexPath.row] {
-            if let profileImageURL = tweet.creator?.profileURL {
-                cell.profileImageView.setImageWith(profileImageURL)
-            }
-            cell.nameLabel.text = tweet.creator?.name
-            cell.userNameLabel.text = tweet.creator?.screenname
-            cell.messageLabel.text = tweet.text
+            cell.tweet = tweet
         }
         
         return cell

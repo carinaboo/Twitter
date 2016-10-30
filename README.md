@@ -2,7 +2,7 @@
 
 **Twitter** is a basic twitter app to read and compose tweets from the [Twitter API](https://apps.twitter.com/).
 
-Time spent: **13** hours spent in total
+Time spent: **14.5** hours spent in total
 
 ## User Stories
 
@@ -11,7 +11,7 @@ The following **required** functionality is completed:
 - [x] User can sign in using OAuth login flow.
 - [x] User can view last 20 tweets from their home timeline.
 - [x] The current signed in user will be persisted across restarts.
-- [ ] In the home timeline, user can view tweet with the user profile picture, username, tweet text, and timestamp.  In other words, design the custom cell with the proper Auto Layout settings.  You will also need to augment the model classes.
+- [x] In the home timeline, user can view tweet with the user profile picture, username, tweet text, and timestamp.  In other words, design the custom cell with the proper Auto Layout settings.  You will also need to augment the model classes.
 - [x] User can pull to refresh.
 - [ ] User can compose a new tweet by tapping on a compose button.
 - [ ] User can tap on a tweet to view it, with controls to retweet, favorite, and reply.
@@ -27,7 +27,8 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-- [ ] List anything else that you can get done to improve the app functionality!
+List anything else that you can get done to improve the app functionality!
+- [x] Write custom timestamp logic and formatter so "2m" is shown for times < 1 hr, "4h" for times < 24 hrs, "Sat Oct 29" for dates >= 24 hrs, and "Dec 24, 2015" for dates >= 1 year.
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
