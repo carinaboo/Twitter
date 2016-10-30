@@ -45,31 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         print("\(url.description)")
         
-        let requestToken = BDBOAuth1Credential(queryString: url.query)
-        
-        TwitterClient.sharedInstance.fetchAccessToken(withPath: "oauth/access_token", method: "POST", requestToken: requestToken, success: { (accessToken: BDBOAuth1Credential?) in
-            print("I got the access token!")
-            
-            TwitterClient.sharedInstance.currentAccount(success: { (user: User) in
-                print("yay!")
-            }, failure: { (error: Error) in
-                print("oh no!")
-            })
-           
-            TwitterClient.sharedInstance.homeTimeline(success: { (tweets: [Tweet]) in
-                print("yay timeline!")
-            }, failure: { (error:Error) in
-                print("oh no timeline!")
-            })
-            
-            // Go to Home screen
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "HomeNavigationViewController") as! UINavigationController
-            self.window!.rootViewController = vc
-            
-        }, failure: { (error: Error?) in
-            print("error: \(error?.localizedDescription)")
-        })
+        TwitterClient.sharedInstance.handleOpenURL(url: url)
         
         return true
     }
