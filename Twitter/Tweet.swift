@@ -10,13 +10,20 @@ import UIKit
 
 class Tweet: NSObject {
     
+    var id: Int?
     var creator: User?
     var text: String?
     var timestamp: Date?
     var retweetCount: Int = 0
     var favoritesCount: Int = 0
     
+    var retweeted: Bool = false // retweeted by current user
+    var favorited: Bool = false // favorited by current user
+    
     init(_ dictionary: NSDictionary) {
+        print(dictionary)
+        id = dictionary["id"] as? Int
+        
         let userDictionary = dictionary["user"] as? NSDictionary
         if let userDictionary = userDictionary {
             creator = User(userDictionary)
@@ -33,6 +40,9 @@ class Tweet: NSObject {
             formatter.dateFormat = "EEE MMM d HH:mm:ss Z y"
             timestamp = formatter.date(from: timestampString)
         }
+        
+        retweeted = dictionary["retweeted"] as? Bool ?? false
+        favorited = dictionary["favorited"] as? Bool ?? false
     }
     
     class func tweets(from dictionaries: [NSDictionary]) -> [Tweet] {

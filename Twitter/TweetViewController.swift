@@ -33,6 +33,10 @@ class TweetViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         // Load tweet details
+        reloadData()
+    }
+    
+    func reloadData() {
         if let profileImageURL = tweet.creator?.profileURL {
             profileImageView.setImageWith(profileImageURL)
         }
@@ -48,6 +52,14 @@ class TweetViewController: UIViewController {
         }
         retweetCountLabel.text = "\(tweet.retweetCount)"
         favoriteCountLabel.text = "\(tweet.favoritesCount)"
+        
+        let favoriteButtonImageView = favoriteButton.imageView
+        favoriteButtonImageView?.image = favoriteButtonImageView?.image!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+        if (tweet.favorited) {
+            favoriteButtonImageView?.tintColor = UIColor.init(colorLiteralRed: 226.0/255.0, green: 38.0/255.0, blue: 77.0/255.0, alpha: 1.0)
+        } else {
+            favoriteButtonImageView?.tintColor = UIColor.gray
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -61,6 +73,27 @@ class TweetViewController: UIViewController {
     
     @IBAction func onFavoriteButton(_ sender: AnyObject) {
         print("Favorite")
+        
+        let favorite: Bool = !tweet.favorited
+        // Update UI immediately, don't wait for API call to return
+        if favorite {
+            // Favorite tweet
+            self.tweet.favorited = true
+            self.tweet.favoritesCount += 1
+            favoriteCountLabel.text = "\(self.tweet.favoritesCount)"
+        } else {
+            // Unfavorite tweet
+            self.tweet.favorited = false
+            self.tweet.favoritesCount -= 1
+            favoriteCountLabel.text = "\(self.tweet.favoritesCount)"
+        }
+        TwitterClient.sharedInstance.favorite(id: tweet.id!, favorite: favorite, success: { (tweet: Tweet) in
+            // API doesn't return most updated tweet that includes my favorite count :(
+//            self.tweet = tweet
+            self.reloadData()
+        }) { (error: Error) in
+            print("error: \(error.localizedDescription)")
+        }
     }
     
     @IBAction func onReplyButton(_ sender: AnyObject) {
