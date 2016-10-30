@@ -58,6 +58,10 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return cell
     }
     
+    @IBAction func onLogOutButton(_ sender: AnyObject) {
+        TwitterClient.sharedInstance.logout()
+    }
+    
 
     /*
     // MARK: - Navigation

@@ -10,11 +10,11 @@ import UIKit
 import BDBOAuth1Manager
 
 class TwitterClient: BDBOAuth1SessionManager {
+
+    static let sharedInstance: TwitterClient! = TwitterClient(baseURL: URL(string: "https://api.twitter.com"), consumerKey: TwitterApp.consumerKey, consumerSecret: TwitterApp.consumerSecret)
     
     var loginSuccess: (() -> ())?
     var loginFailure: ((Error) -> ())?
-
-    static let sharedInstance: TwitterClient! = TwitterClient(baseURL: URL(string: "https://api.twitter.com"), consumerKey: TwitterApp.consumerKey, consumerSecret: TwitterApp.consumerSecret)
     
     func login(success: @escaping () -> (), failure: @escaping (Error) -> ()) {
         loginSuccess = success
@@ -33,23 +33,25 @@ class TwitterClient: BDBOAuth1SessionManager {
         })
     }
     
+    func logout() {
+        User.currentUser = nil
+        deauthorize()
+        
+        NotificationCenter.default.post(name: User.userDidLogoutNotificationName, object: nil)
+    }
+    
     func handleOpenURL(url: URL) {
         let requestToken = BDBOAuth1Credential(queryString: url.query)
         
         self.fetchAccessToken(withPath: "oauth/access_token", method: "POST", requestToken: requestToken, success: { (accessToken: BDBOAuth1Credential?) in
-            self.loginSuccess?()
             
             self.currentAccount(success: { (user: User) in
-                print("yay!")
-                }, failure: { (error: Error) in
-                    print("oh no!")
+                User.currentUser = user
+                self.loginSuccess?()
+            }, failure: { (error: Error) in
+                self.loginFailure?(error)
             })
             
-            self.homeTimeline(success: { (tweets: [Tweet]) in
-                print("yay timeline!")
-                }, failure: { (error:Error) in
-                    print("oh no timeline!")
-            })
         }, failure: { (error: Error?) in
             print("error: \(error?.localizedDescription)")
             self.loginFailure?(error!)
@@ -60,11 +62,6 @@ class TwitterClient: BDBOAuth1SessionManager {
         get("1.1/account/verify_credentials.json", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
             let userDictionary = response as! NSDictionary
             let user = User(userDictionary)
-            
-            print("name: \(user.name)")
-            print("screen_name: \(user.screenname)")
-            print("profile_image_url_https: \(user.profileURL)")
-            print("description: \(user.tagline)")
             
             success(user)
             
@@ -80,10 +77,6 @@ class TwitterClient: BDBOAuth1SessionManager {
             let dictionaries = response as! [NSDictionary]
             
             let tweets = Tweet.tweets(from: dictionaries)
-            
-            for tweet in tweets {
-                print("\(tweet.creator?.name): \(tweet.text)")
-            }
             
             success(tweets)
             

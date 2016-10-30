@@ -189,8 +189,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="3s1-rd-faa">
-                        <barButtonItem key="leftBarButtonItem" title="Sign out" id="VDN-pc-bJz">
+                        <barButtonItem key="leftBarButtonItem" title="Log out" id="VDN-pc-bJz">
                             <connections>
+                                <action selector="onLogOutButton:" destination="NG0-Of-tnz" id="Ua2-mJ-9Jh"/>
                                 <segue destination="BYZ-38-t0r" kind="presentation" identifier="SignOut" id="AwP-rY-YG4"/>
                             </connections>
                         </barButtonItem>
@@ -326,6 +327,6 @@
         <image name="retweet" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="UoL-DW-kYS"/>
+        <segue reference="VXe-KM-8CF"/>
     </inferredMetricsTieBreakers>
 </document>
