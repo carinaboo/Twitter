@@ -2,7 +2,7 @@
 
 **Twitter** is a basic twitter app to read and compose tweets from the [Twitter API](https://apps.twitter.com/).
 
-Time spent: **14.5** hours spent in total
+Time spent: **17** hours spent in total
 
 ## User Stories
 
@@ -29,6 +29,7 @@ The following **additional** features are implemented:
 
 List anything else that you can get done to improve the app functionality!
 - [x] Write custom timestamp logic and formatter so "2m" is shown for times < 1 hr, "4h" for times < 24 hrs, "Sat Oct 29" for dates >= 24 hrs, and "Dec 24, 2015" for dates >= 1 year.
+- [x] Favorite button updates color on favorite/unfavorite of a tweet.
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
