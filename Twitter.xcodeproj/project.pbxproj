@@ -179,7 +179,7 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -398,6 +398,7 @@
 			baseConfigurationReference = 467AFECF3F2068210C31DC3C /* Pods-Twitter.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Twitter/Twitter.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 64C3JFHWQT;
 				INFOPLIST_FILE = Twitter/Info.plist;
@@ -415,6 +416,7 @@
 			baseConfigurationReference = E69CA28B1BB3EAE5C59FDEC1 /* Pods-Twitter.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Twitter/Twitter.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 64C3JFHWQT;
 				INFOPLIST_FILE = Twitter/Info.plist;
