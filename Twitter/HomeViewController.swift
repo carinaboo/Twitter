@@ -31,11 +31,28 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }, failure: { (error:Error) in
             print("error: \(error.localizedDescription)")
         })
+        
+        // Pull to refresh spinner
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshControlAction(refreshControl:)), for: UIControlEvents.valueChanged)
+        tableView.insertSubview(refreshControl, at: 0)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: - Pull to Refresh
+    func refreshControlAction(refreshControl:UIRefreshControl) {
+        // Refresh tweets
+        TwitterClient.sharedInstance.homeTimeline(success: { (tweets: [Tweet]) in
+            self.tweets = tweets
+            self.tableView.reloadData()
+            refreshControl.endRefreshing()
+        }, failure: { (error:Error) in
+            print("error: \(error.localizedDescription)")
+        })
     }
     
     // MARK: - TableView
