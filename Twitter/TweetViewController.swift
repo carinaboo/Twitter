@@ -44,6 +44,8 @@ class TweetViewController: UIViewController {
             formatter.dateFormat = "EEE MMM d, y h:mm a" // Sat Oct 29, 2015 8:22 AM
             dateTimeLabel.text = formatter.string(from: timestamp)
         }
+        retweetCountLabel.text = "\(tweet.retweetCount)"
+        favoriteCountLabel.text = "\(tweet.favoritesCount)"
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,12 +54,15 @@ class TweetViewController: UIViewController {
     }
     
     @IBAction func onRetweetButton(_ sender: AnyObject) {
+        print("Retweet")
     }
     
     @IBAction func onFavoriteButton(_ sender: AnyObject) {
+        print("Favorite")
     }
     
     @IBAction func onReplyButton(_ sender: AnyObject) {
+        print("Reply")
     }
 
     /*
