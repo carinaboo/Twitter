@@ -32,7 +32,9 @@ class TweetCell: UITableViewCell {
                 profileImageView.setImageWith(profileImageURL)
             }
             nameLabel.text = tweet.creator?.name
-            userNameLabel.text = tweet.creator?.screenname
+            if let screenname = tweet.creator?.screenname {
+                userNameLabel.text = "@\(screenname)"
+            }
             messageLabel.text = tweet.text
             if let timestamp = tweet.timestamp {
                 dateTimeLabel.text = dateString(for: timestamp)
