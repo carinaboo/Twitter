@@ -170,7 +170,7 @@
                                             <outlet property="replyButton" destination="jcW-UE-SfQ" id="LkM-cG-cXy"/>
                                             <outlet property="retweetButton" destination="phu-Zs-wI1" id="f9b-tY-zsn"/>
                                             <outlet property="userNameLabel" destination="NpG-bR-ihM" id="uqA-Pt-I4g"/>
-                                            <segue destination="S6O-zh-5zs" kind="show" identifier="ViewTweet" id="yFG-7q-xfi"/>
+                                            <segue destination="VIS-CE-abi" kind="show" identifier="ViewTweet" id="Wp4-bG-1v5"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -401,24 +401,6 @@
             <point key="canvasLocation" x="992.79999999999995" y="117.39130434782609"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="Nks-5t-7cI">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="S6O-zh-5zs" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="M93-2a-gHU">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="VIS-CE-abi" kind="relationship" relationship="rootViewController" id="A09-Ow-FZ8"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iXt-1K-gpm" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2876" y="-189"/>
-        </scene>
-        <!--Navigation Controller-->
         <scene sceneID="ZiR-Mt-YPh">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7Ub-CP-yDa" sceneMemberID="viewController">
@@ -444,6 +426,6 @@
         <image name="retweet" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="UoL-DW-kYS"/>
+        <segue reference="VXe-KM-8CF"/>
     </inferredMetricsTieBreakers>
 </document>

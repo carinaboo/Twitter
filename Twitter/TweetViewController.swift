@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AFNetworking
 
 class TweetViewController: UIViewController {
     
@@ -24,26 +25,25 @@ class TweetViewController: UIViewController {
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var replyButton: UIButton!
     
-    var tweet: Tweet! {
-        didSet {
-            if let profileImageURL = tweet.creator?.profileURL {
-                profileImageView.setImageWith(profileImageURL)
-            }
-            nameLabel.text = tweet.creator?.name
-            userNameLabel.text = tweet.creator?.screenname
-            messageLabel.text = tweet.text
-            if let timestamp = tweet.timestamp {
-                let formatter = DateFormatter()
-                formatter.dateFormat = "EEE MMM d, y h:mm a" // Sat Oct 29, 2015 8:22 AM
-                dateTimeLabel.text = formatter.string(from: timestamp)
-            }
-        }
-    }
+    var tweet: Tweet!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        // Load tweet details
+        if let profileImageURL = tweet.creator?.profileURL {
+            profileImageView.setImageWith(profileImageURL)
+        }
+        nameLabel.text = tweet.creator?.name
+        userNameLabel.text = tweet.creator?.screenname
+        messageLabel.text = tweet.text
+        if let timestamp = tweet.timestamp {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "EEE MMM d, y h:mm a" // Sat Oct 29, 2015 8:22 AM
+            dateTimeLabel.text = formatter.string(from: timestamp)
+        }
     }
 
     override func didReceiveMemoryWarning() {
