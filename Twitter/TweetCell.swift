@@ -50,33 +50,77 @@ class TweetCell: UITableViewCell {
     
     // Updates the retweet, favorite, and reply button based on the tweet's current state.
     func updateActionButtons() {
+        updateRetweetButton()
+        
+        updateFavoriteButton()
+        
+        let replyButtonImageView = replyButton.imageView
+        replyButton.setImage(replyButtonImageView?.image!.withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: UIControlState.normal)
+        replyButtonImageView?.tintColor = UIColor.gray
+    }
+    
+    func updateRetweetButton() {
         let retweetButtonImageView = retweetButton.imageView
-        retweetButtonImageView?.image = retweetButtonImageView?.image!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+        retweetButton.setImage(retweetButtonImageView?.image!.withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: UIControlState.normal)
         if (tweet.retweeted) {
             retweetButtonImageView?.tintColor = UIColor.init(colorLiteralRed: 25.0/255.0, green: 207.0/255.0, blue: 134.0/255.0, alpha: 1.0) // mint green
         } else {
             retweetButtonImageView?.tintColor = UIColor.gray
         }
-        
+    }
+    
+    func updateFavoriteButton() {
         let favoriteButtonImageView = favoriteButton.imageView
-        favoriteButtonImageView?.image = favoriteButtonImageView?.image!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+        favoriteButton.setImage(favoriteButtonImageView?.image!.withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: UIControlState.normal)
         if (tweet.favorited) {
             favoriteButtonImageView?.tintColor = UIColor.init(colorLiteralRed: 226.0/255.0, green: 38.0/255.0, blue: 77.0/255.0, alpha: 1.0) // bright pink
         } else {
             favoriteButtonImageView?.tintColor = UIColor.gray
         }
-        
-        let replyButtonImageView = replyButton.imageView
-        replyButtonImageView?.image = replyButtonImageView?.image!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
-        replyButtonImageView?.tintColor = UIColor.gray
     }
     
     @IBAction func onRetweetButton(_ sender: AnyObject) {
         print("Retweet")
+        
+        let retweet: Bool = !tweet.retweeted
+        if retweet {
+            // Retweet tweet
+            self.tweet.retweeted = true
+            self.tweet.retweetCount += 1
+        } else {
+            // Unretweet tweet
+            self.tweet.retweeted = false
+            self.tweet.retweetCount -= 1
+        }
+        updateRetweetButton()
+        
+        TwitterClient.sharedInstance.retweet(id: tweet.id!, retweet: retweet, success: { (tweet: Tweet) in
+            print("retweeted")
+        }) { (error: Error) in
+            print("error: \(error.localizedDescription)")
+        }
     }
     
     @IBAction func onFavoriteButton(_ sender: AnyObject) {
         print("Favorite")
+        
+        let favorite: Bool = !tweet.favorited
+        if favorite {
+            // Favorite tweet
+            self.tweet.favorited = true
+            self.tweet.favoritesCount += 1
+        } else {
+            // Unfavorite tweet
+            self.tweet.favorited = false
+            self.tweet.favoritesCount -= 1
+        }
+        updateFavoriteButton()
+        
+        TwitterClient.sharedInstance.favorite(id: tweet.id!, favorite: favorite, success: { (tweet: Tweet) in
+            print("favorited")
+        }) { (error: Error) in
+            print("error: \(error.localizedDescription)")
+        }
     }
     
     @IBAction func onReplyButton(_ sender: AnyObject) {

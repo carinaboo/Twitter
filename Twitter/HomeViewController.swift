@@ -85,6 +85,14 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             let tweet = self.tweets?[(indexPath?.row)!]
             tweetViewController.tweet = tweet
         }
+        if (segue.identifier == "ReplyToTweetFromHome") {
+            let replyButton: UIButton = sender as! UIButton
+            let cell = replyButton.superview?.superview as! UITableViewCell
+            let indexPath = self.tableView.indexPath(for: cell)
+            let tweet = self.tweets?[(indexPath?.row)!]
+            let newTweetViewController = segue.destination as! NewTweetViewController
+            newTweetViewController.replyToTweet = tweet
+        }
     }
 
 }

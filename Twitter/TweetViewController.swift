@@ -54,7 +54,7 @@ class TweetViewController: UIViewController {
         favoriteCountLabel.text = "\(tweet.favoritesCount)"
         
         let retweetButtonImageView = retweetButton.imageView
-        retweetButtonImageView?.image = retweetButtonImageView?.image!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+        retweetButton.setImage(retweetButtonImageView?.image!.withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: UIControlState.normal)
         if (tweet.retweeted) {
             retweetButtonImageView?.tintColor = UIColor.init(colorLiteralRed: 25.0/255.0, green: 207.0/255.0, blue: 134.0/255.0, alpha: 1.0) // mint green
         } else {
@@ -62,7 +62,7 @@ class TweetViewController: UIViewController {
         }
         
         let favoriteButtonImageView = favoriteButton.imageView
-        favoriteButtonImageView?.image = favoriteButtonImageView?.image!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+        favoriteButton.setImage(favoriteButtonImageView?.image!.withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: UIControlState.normal)
         if (tweet.favorited) {
             favoriteButtonImageView?.tintColor = UIColor.init(colorLiteralRed: 226.0/255.0, green: 38.0/255.0, blue: 77.0/255.0, alpha: 1.0) // bright pink
         } else {
@@ -70,7 +70,7 @@ class TweetViewController: UIViewController {
         }
         
         let replyButtonImageView = replyButton.imageView
-        replyButtonImageView?.image = replyButtonImageView?.image!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+        replyButton.setImage(replyButtonImageView?.image!.withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: UIControlState.normal)
         replyButtonImageView?.tintColor = UIColor.gray
     }
 
@@ -95,7 +95,7 @@ class TweetViewController: UIViewController {
             retweetCountLabel.text = "\(self.tweet.retweetCount)"
         }
         TwitterClient.sharedInstance.retweet(id: tweet.id!, retweet: retweet, success: { (tweet: Tweet) in
-            // API doesn't return most updated tweet that includes my favorite count :(
+            // API doesn't return most updated tweet that includes my favorite count
 //            self.tweet = tweet
             self.reloadData()
         }) { (error: Error) in
@@ -121,7 +121,7 @@ class TweetViewController: UIViewController {
             favoriteCountLabel.text = "\(self.tweet.favoritesCount)"
         }
         TwitterClient.sharedInstance.favorite(id: tweet.id!, favorite: favorite, success: { (tweet: Tweet) in
-            // API doesn't return most updated tweet that includes my favorite count :(
+            // API doesn't return most updated tweet that includes my favorite count
 //            self.tweet = tweet
             self.reloadData()
         }) { (error: Error) in

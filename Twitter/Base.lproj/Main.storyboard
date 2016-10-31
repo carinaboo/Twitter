@@ -114,6 +114,9 @@
                                                         <constraint firstAttribute="height" constant="24" id="wdb-gh-P0M"/>
                                                     </constraints>
                                                     <state key="normal" title="Button" image="retweet"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="keyPath" value=""/>
+                                                    </userDefinedRuntimeAttributes>
                                                     <connections>
                                                         <action selector="onRetweetButton:" destination="daw-iS-Qia" eventType="touchUpInside" id="GN2-hO-q3o"/>
                                                     </connections>
@@ -136,6 +139,7 @@
                                                     <state key="normal" title="Button" image="reply"/>
                                                     <connections>
                                                         <action selector="onReplyButton:" destination="daw-iS-Qia" eventType="touchUpInside" id="ezn-Zo-U9G"/>
+                                                        <segue destination="jYv-O4-Rvt" kind="show" identifier="ReplyToTweetFromHome" id="fMB-Ed-42q"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -441,7 +445,7 @@
         <image name="retweet" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="UoL-DW-kYS"/>
-        <segue reference="ELB-fw-6BG"/>
+        <segue reference="EbJ-Tv-ZOi"/>
+        <segue reference="fMB-Ed-42q"/>
     </inferredMetricsTieBreakers>
 </document>
