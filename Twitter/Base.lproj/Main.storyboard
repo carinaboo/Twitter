@@ -114,9 +114,6 @@
                                                         <constraint firstAttribute="height" constant="24" id="wdb-gh-P0M"/>
                                                     </constraints>
                                                     <state key="normal" title="Button" image="retweet"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="keyPath" value=""/>
-                                                    </userDefinedRuntimeAttributes>
                                                     <connections>
                                                         <action selector="onRetweetButton:" destination="daw-iS-Qia" eventType="touchUpInside" id="GN2-hO-q3o"/>
                                                     </connections>
@@ -424,9 +421,15 @@
             <objects>
                 <navigationController storyboardIdentifier="HomeNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="li8-KD-f8q" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sYP-Ha-dcK">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="sYP-Ha-dcK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.1176470588" green="0.55294117649999996" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.11764705882352941" green="0.55294117647058827" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -445,7 +448,7 @@
         <image name="retweet" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="EbJ-Tv-ZOi"/>
+        <segue reference="VXe-KM-8CF"/>
         <segue reference="fMB-Ed-42q"/>
     </inferredMetricsTieBreakers>
 </document>

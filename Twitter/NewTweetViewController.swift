@@ -23,6 +23,8 @@ class NewTweetViewController: UIViewController, UITextViewDelegate {
         // Show current user's profile picture
         if let profileImageURL = User.currentUser?.profileURL {
             profileImageView.setImageWith(profileImageURL)
+            profileImageView.layer.cornerRadius = 4.0;
+            profileImageView.clipsToBounds = true;
         }
         
         // Add @screenname to text field if in reply to a tweet

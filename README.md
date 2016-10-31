@@ -2,7 +2,7 @@
 
 **Twitter** is a basic twitter app to read and compose tweets from the [Twitter API](https://apps.twitter.com/).
 
-Time spent: **18.5** hours spent in total
+Time spent: **20.5** hours spent in total
 
 ## User Stories
 
@@ -32,6 +32,8 @@ List anything else that you can get done to improve the app functionality!
 - [x] Favorite button updates color on favorite/unfavorite of a tweet.
 - [x] Show user profile image on new tweet screen.
 - [x] After creating replying to a tweet, a user can view it in the timeline immediately without refetching the timeline from the network.
+- [x] Let users retweet, favorite, and reply directly from the home timeline.
+- [x] Color the navigation bar like Twitter
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 

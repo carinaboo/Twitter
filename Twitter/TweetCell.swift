@@ -24,6 +24,8 @@ class TweetCell: UITableViewCell {
         didSet {
             if let profileImageURL = tweet.creator?.profileURL {
                 profileImageView.setImageWith(profileImageURL)
+                profileImageView.layer.cornerRadius = 4.0;
+                profileImageView.clipsToBounds = true;
             }
             nameLabel.text = tweet.creator?.name
             if let screenname = tweet.creator?.screenname {
