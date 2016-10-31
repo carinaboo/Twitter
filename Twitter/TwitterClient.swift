@@ -73,7 +73,22 @@ class TwitterClient: BDBOAuth1SessionManager {
     }
     
     func homeTimeline(success: @escaping ([Tweet]) -> (), failure: @escaping (Error) -> ()) {
-        get("1.1/statuses/home_timeline.json", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
+        homeTimeline(olderThan: 0, success: { (tweet: [Tweet]) in
+            success(tweet)
+        }) { (error: Error) in
+            failure(error)
+        }
+    }
+    
+    // Gets tweets posted before / older than tweet |id| specified. If 0, ignores |id| param.
+    func homeTimeline(olderThan id: Int, success: @escaping ([Tweet]) -> (), failure: @escaping (Error) -> ()) {
+        var params: [String:Any] = [
+            "count": 20,
+        ]
+        if id > 0 {
+            params["max_id"] = id
+        }
+        get("1.1/statuses/home_timeline.json", parameters: params, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
             let dictionaries = response as! [NSDictionary]
             
             let tweets = Tweet.tweets(from: dictionaries)

@@ -2,7 +2,7 @@
 
 **Twitter** is a basic twitter app to read and compose tweets from the [Twitter API](https://apps.twitter.com/).
 
-Time spent: **20.5** hours spent in total
+Time spent: **21** hours spent in total
 
 ## User Stories
 
@@ -23,7 +23,7 @@ The following **optional** features are implemented:
 - [x] Retweeting and favoriting should increment the retweet and favorite count.
 - [x] User should be able to unretweet and unfavorite and should decrement the retweet and favorite count.
 - [x] Replies should be prefixed with the username and the reply_id should be set when posting the tweet,
-- [ ] User can load more tweets once they reach the bottom of the feed using infinite loading similar to the actual Twitter client.
+- [x] User can load more tweets once they reach the bottom of the feed using infinite loading similar to the actual Twitter client.
 
 The following **additional** features are implemented:
 
