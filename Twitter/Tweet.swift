@@ -21,7 +21,6 @@ class Tweet: NSObject {
     var favorited: Bool = false // favorited by current user
     
     init(_ dictionary: NSDictionary) {
-        print(dictionary)
         id = dictionary["id"] as? Int
         
         let userDictionary = dictionary["user"] as? NSDictionary

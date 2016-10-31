@@ -270,6 +270,7 @@
                                 <state key="normal" title="Button" image="reply"/>
                                 <connections>
                                     <action selector="onReplyButton:" destination="VIS-CE-abi" eventType="touchUpInside" id="lM4-j8-nEd"/>
+                                    <segue destination="jYv-O4-Rvt" kind="show" identifier="ReplyToTweet" id="ELB-fw-6BG"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1321" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P9F-dH-ykp">
@@ -333,7 +334,6 @@
                                 <segue destination="NG0-Of-tnz" kind="show" identifier="BackViewTweet" id="UoL-DW-kYS"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Reply" id="NKy-Nu-aoN"/>
                     </navigationItem>
                     <connections>
                         <outlet property="dateTimeLabel" destination="iAG-qP-FKM" id="X2O-BM-swe"/>
@@ -442,5 +442,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="UoL-DW-kYS"/>
+        <segue reference="ELB-fw-6BG"/>
     </inferredMetricsTieBreakers>
 </document>

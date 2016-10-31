@@ -14,7 +14,7 @@ The following **required** functionality is completed:
 - [x] In the home timeline, user can view tweet with the user profile picture, username, tweet text, and timestamp.  In other words, design the custom cell with the proper Auto Layout settings.  You will also need to augment the model classes.
 - [x] User can pull to refresh.
 - [x] User can compose a new tweet by tapping on a compose button.
-- [ ] User can tap on a tweet to view it, with controls to retweet, favorite, and reply.
+- [x] User can tap on a tweet to view it, with controls to retweet, favorite, and reply.
 
 The following **optional** features are implemented:
 
@@ -22,7 +22,7 @@ The following **optional** features are implemented:
 - [x] After creating a new tweet, a user should be able to view it in the timeline immediately without refetching the timeline from the network.
 - [x] Retweeting and favoriting should increment the retweet and favorite count.
 - [x] User should be able to unretweet and unfavorite and should decrement the retweet and favorite count.
-- [ ] Replies should be prefixed with the username and the reply_id should be set when posting the tweet,
+- [x] Replies should be prefixed with the username and the reply_id should be set when posting the tweet,
 - [ ] User can load more tweets once they reach the bottom of the feed using infinite loading similar to the actual Twitter client.
 
 The following **additional** features are implemented:
@@ -31,6 +31,7 @@ List anything else that you can get done to improve the app functionality!
 - [x] Write custom timestamp logic and formatter so "2m" is shown for times < 1 hr, "4h" for times < 24 hrs, "Sat Oct 29" for dates >= 24 hrs, and "Dec 24, 2015" for dates >= 1 year.
 - [x] Favorite button updates color on favorite/unfavorite of a tweet.
 - [x] Show user profile image on new tweet screen.
+- [x] After creating replying to a tweet, a user can view it in the timeline immediately without refetching the timeline from the network.
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 

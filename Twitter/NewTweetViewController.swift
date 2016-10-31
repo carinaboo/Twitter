@@ -14,6 +14,8 @@ class NewTweetViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var messageTextView: UITextView!
     @IBOutlet weak var characterCountLabel: UILabel!
     
+    var replyToTweet: Tweet? // Set if replying to a tweet
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,6 +23,13 @@ class NewTweetViewController: UIViewController, UITextViewDelegate {
         // Show current user's profile picture
         if let profileImageURL = User.currentUser?.profileURL {
             profileImageView.setImageWith(profileImageURL)
+        }
+        
+        // Add @screenname to text field if in reply to a tweet
+        if let replyToTweet = replyToTweet {
+            if let screenname = replyToTweet.creator?.screenname {
+                messageTextView.text = "@\(screenname)"
+            }
         }
         
         // Update character count as user types
@@ -48,13 +57,25 @@ class NewTweetViewController: UIViewController, UITextViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "PostTweet") {
             let message = messageTextView.text ?? ""
-            TwitterClient.sharedInstance.post(status: message, success: { (tweet: Tweet) in
-                let homeViewController = segue.destination as! HomeViewController
-                homeViewController.tweets?.insert(tweet, at: 0)
-                homeViewController.tableView.reloadData()
-            }, failure: { (error: Error) in
-                print("error: \(error.localizedDescription)")
-            })
+            
+            if let replyToTweet = replyToTweet {
+                TwitterClient.sharedInstance.reply(to: replyToTweet.id!, status: message, success: { (tweet: Tweet) in
+                    let homeViewController = segue.destination as! HomeViewController
+                    homeViewController.tweets?.insert(tweet, at: 0)
+                    homeViewController.tableView.reloadData()
+                }, failure: { (error: Error) in
+                    print("error: \(error.localizedDescription)")
+                })
+                self.replyToTweet = nil
+            } else {
+                TwitterClient.sharedInstance.post(status: message, success: { (tweet: Tweet) in
+                    let homeViewController = segue.destination as! HomeViewController
+                    homeViewController.tweets?.insert(tweet, at: 0)
+                    homeViewController.tableView.reloadData()
+                    }, failure: { (error: Error) in
+                        print("error: \(error.localizedDescription)")
+                })
+            }
         }
     }
 

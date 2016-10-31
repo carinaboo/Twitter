@@ -68,6 +68,10 @@ class TweetViewController: UIViewController {
         } else {
             favoriteButtonImageView?.tintColor = UIColor.gray
         }
+        
+        let replyButtonImageView = replyButton.imageView
+        replyButtonImageView?.image = replyButtonImageView?.image!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+        replyButtonImageView?.tintColor = UIColor.gray
     }
 
     override func didReceiveMemoryWarning() {
@@ -129,14 +133,15 @@ class TweetViewController: UIViewController {
         print("Reply")
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if (segue.identifier == "ReplyToTweet") {
+            let newTweetViewController = segue.destination as! NewTweetViewController
+            newTweetViewController.replyToTweet = tweet
+        }
     }
-    */
 
 }
