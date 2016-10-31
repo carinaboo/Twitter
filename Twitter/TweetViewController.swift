@@ -53,10 +53,18 @@ class TweetViewController: UIViewController {
         retweetCountLabel.text = "\(tweet.retweetCount)"
         favoriteCountLabel.text = "\(tweet.favoritesCount)"
         
+        let retweetButtonImageView = retweetButton.imageView
+        retweetButtonImageView?.image = retweetButtonImageView?.image!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+        if (tweet.retweeted) {
+            retweetButtonImageView?.tintColor = UIColor.init(colorLiteralRed: 25.0/255.0, green: 207.0/255.0, blue: 134.0/255.0, alpha: 1.0) // mint green
+        } else {
+            retweetButtonImageView?.tintColor = UIColor.gray
+        }
+        
         let favoriteButtonImageView = favoriteButton.imageView
         favoriteButtonImageView?.image = favoriteButtonImageView?.image!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
         if (tweet.favorited) {
-            favoriteButtonImageView?.tintColor = UIColor.init(colorLiteralRed: 226.0/255.0, green: 38.0/255.0, blue: 77.0/255.0, alpha: 1.0)
+            favoriteButtonImageView?.tintColor = UIColor.init(colorLiteralRed: 226.0/255.0, green: 38.0/255.0, blue: 77.0/255.0, alpha: 1.0) // bright pink
         } else {
             favoriteButtonImageView?.tintColor = UIColor.gray
         }
@@ -69,6 +77,27 @@ class TweetViewController: UIViewController {
     
     @IBAction func onRetweetButton(_ sender: AnyObject) {
         print("Retweet")
+        
+        let retweet: Bool = !tweet.retweeted
+        if retweet {
+            // Retweet tweet
+            self.tweet.retweeted = true
+            self.tweet.retweetCount += 1
+            retweetCountLabel.text = "\(self.tweet.retweetCount)"
+        } else {
+            // Unretweet tweet
+            self.tweet.retweeted = false
+            self.tweet.retweetCount -= 1
+            retweetCountLabel.text = "\(self.tweet.retweetCount)"
+        }
+        TwitterClient.sharedInstance.retweet(id: tweet.id!, retweet: retweet, success: { (tweet: Tweet) in
+            // API doesn't return most updated tweet that includes my favorite count :(
+//            self.tweet = tweet
+            self.reloadData()
+        }) { (error: Error) in
+            print("error: \(error.localizedDescription)")
+        }
+
     }
     
     @IBAction func onFavoriteButton(_ sender: AnyObject) {
