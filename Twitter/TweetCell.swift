@@ -11,19 +11,13 @@ import UIKit
 class TweetCell: UITableViewCell {
     
     @IBOutlet weak var profileImageView: UIImageView!
-    
     @IBOutlet weak var nameLabel: UILabel!
-
     @IBOutlet weak var userNameLabel: UILabel!
-    
     @IBOutlet weak var messageLabel: UILabel!
-    
     @IBOutlet weak var dateTimeLabel: UILabel!
     
     @IBOutlet weak var retweetButton: UIButton!
-    
     @IBOutlet weak var favoriteButton: UIButton!
-    
     @IBOutlet weak var replyButton: UIButton!
     
     var tweet: Tweet! {
@@ -39,6 +33,7 @@ class TweetCell: UITableViewCell {
             if let timestamp = tweet.timestamp {
                 dateTimeLabel.text = dateString(for: timestamp)
             }
+            updateActionButtons()
         }
     }
     
@@ -51,6 +46,29 @@ class TweetCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    // Updates the retweet, favorite, and reply button based on the tweet's current state.
+    func updateActionButtons() {
+        let retweetButtonImageView = retweetButton.imageView
+        retweetButtonImageView?.image = retweetButtonImageView?.image!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+        if (tweet.retweeted) {
+            retweetButtonImageView?.tintColor = UIColor.init(colorLiteralRed: 25.0/255.0, green: 207.0/255.0, blue: 134.0/255.0, alpha: 1.0) // mint green
+        } else {
+            retweetButtonImageView?.tintColor = UIColor.gray
+        }
+        
+        let favoriteButtonImageView = favoriteButton.imageView
+        favoriteButtonImageView?.image = favoriteButtonImageView?.image!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+        if (tweet.favorited) {
+            favoriteButtonImageView?.tintColor = UIColor.init(colorLiteralRed: 226.0/255.0, green: 38.0/255.0, blue: 77.0/255.0, alpha: 1.0) // bright pink
+        } else {
+            favoriteButtonImageView?.tintColor = UIColor.gray
+        }
+        
+        let replyButtonImageView = replyButton.imageView
+        replyButtonImageView?.image = replyButtonImageView?.image!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+        replyButtonImageView?.tintColor = UIColor.gray
     }
     
     @IBAction func onRetweetButton(_ sender: AnyObject) {
