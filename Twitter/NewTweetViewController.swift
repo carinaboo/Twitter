@@ -52,6 +52,12 @@ class NewTweetViewController: UIViewController, UITextViewDelegate {
         let characterCount = messageTextView.text?.characters.count
         characterCountLabel.text = "\(140 - characterCount!)"
     }
+    
+    // MARK: - User Action
+    
+    @IBAction func onCancelButton(_ sender: AnyObject) {
+        _ = self.navigationController?.popViewController(animated: true)
+    }
 
     // MARK: - Navigation
 

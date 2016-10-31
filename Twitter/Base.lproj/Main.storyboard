@@ -332,7 +332,7 @@
                     <navigationItem key="navigationItem" title="Tweet" id="rUc-98-fgw">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="JLm-Qz-joD">
                             <connections>
-                                <segue destination="NG0-Of-tnz" kind="show" identifier="BackViewTweet" id="UoL-DW-kYS"/>
+                                <action selector="onBackButton:" destination="VIS-CE-abi" id="Cig-sF-jdw"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -397,7 +397,7 @@
                     <navigationItem key="navigationItem" id="PRh-zu-bAX">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="U9J-Ud-LXw">
                             <connections>
-                                <segue destination="NG0-Of-tnz" kind="show" identifier="CancelNewTweet" id="VBk-ZD-8cO"/>
+                                <action selector="onCancelButton:" destination="jYv-O4-Rvt" id="7Ku-Ew-5ZV"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Tweet" id="NFk-vd-LLb">
@@ -421,7 +421,7 @@
             <objects>
                 <navigationController storyboardIdentifier="HomeNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" id="li8-KD-f8q" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="sYP-Ha-dcK">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sYP-Ha-dcK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.1176470588" green="0.55294117649999996" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -448,7 +448,7 @@
         <image name="retweet" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="VBk-ZD-8cO"/>
-        <segue reference="fMB-Ed-42q"/>
+        <segue reference="ELB-fw-6BG"/>
+        <segue reference="EbJ-Tv-ZOi"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -81,6 +81,8 @@ class TweetViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - User Action
+    
     @IBAction func onRetweetButton(_ sender: AnyObject) {
         print("Retweet")
         
@@ -135,6 +137,9 @@ class TweetViewController: UIViewController {
         print("Reply")
     }
 
+    @IBAction func onBackButton(_ sender: AnyObject) {
+        _ = self.navigationController?.popViewController(animated: true)
+    }
     
     // MARK: - Navigation
 
