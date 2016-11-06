@@ -23,8 +23,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             // Go to Home screen
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "HomeNavigationViewController")
-            window?.rootViewController = vc
+            let hamburgerViewController = storyboard.instantiateViewController(withIdentifier: "HamburgerViewController") as! HamburgerViewController
+            window?.rootViewController = hamburgerViewController
+            
+//            let hamburgerViewController = window?.rootViewController as! HamburgerViewController
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let menuViewController = storyboard.instantiateViewController(withIdentifier: "MenuViewController")
+            
+            hamburgerViewController.menuViewController = menuViewController
         } else {
             print("there is no user")
         }
