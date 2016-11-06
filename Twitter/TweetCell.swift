@@ -8,6 +8,14 @@
 
 import UIKit
 
+protocol TweetCellDelegate: class {
+    
+    func showProfile(user: User)
+    
+//    func showTweet(tweet: Tweet)
+    
+}
+
 class TweetCell: UITableViewCell {
     
     @IBOutlet weak var profileImageView: UIImageView!
@@ -19,6 +27,8 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var retweetButton: UIButton!
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var replyButton: UIButton!
+    
+    var delegate: TweetCellDelegate!
     
     var tweet: Tweet! {
         didSet {
@@ -36,6 +46,11 @@ class TweetCell: UITableViewCell {
                 dateTimeLabel.text = dateString(for: timestamp)
             }
             updateActionButtons()
+            
+            // Add tap gesture recognizer to profile image
+            let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:#selector(TweetCell.onProfileTapGesture))
+            profileImageView.isUserInteractionEnabled = true
+            profileImageView.addGestureRecognizer(tapGestureRecognizer)
         }
     }
     
@@ -80,7 +95,13 @@ class TweetCell: UITableViewCell {
             favoriteButtonImageView?.tintColor = UIColor.gray
         }
     }
-    
+
+    func onProfileTapGesture(image: AnyObject) {
+        if let user = tweet.creator {
+            delegate.showProfile(user: user)
+        }
+    }
+
     @IBAction func onRetweetButton(_ sender: AnyObject) {
         print("Retweet")
         

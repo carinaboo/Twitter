@@ -10,6 +10,7 @@ import UIKit
 
 class User: NSObject {
     
+    var id: Int?
     var name: String?
     var screenname: String?
 //    private(set) var _screenname: String = ""
@@ -22,23 +23,36 @@ class User: NSObject {
 //        }
 //    }
     var profileURL: URL?
+    var profileBackgroundURL: URL?
     var tagline: String?
+    
+    var tweetCount: Int?
+    var followingCount: Int?
+    var followerCount: Int?
     
     var dictionary: NSDictionary?
     
     init(_ dictionary: NSDictionary) {
         self.dictionary = dictionary
         
+        id = dictionary["id"] as? Int
         name = dictionary["name"] as? String
-        
         screenname = dictionary["screen_name"] as? String
         
         let profileURLString = dictionary["profile_image_url_https"] as? String
         if let profileURLString = profileURLString {
             profileURL = URL(string: profileURLString)
         }
+        let profileBackgroundURLString = dictionary["profile_background_image_url_https"] as? String
+        if let profileBackgroundURLString = profileBackgroundURLString {
+            profileBackgroundURL = URL(string: profileBackgroundURLString)
+        }
         
         tagline = dictionary["description"] as? String
+        
+        tweetCount = dictionary["statuses_count"] as? Int
+        followingCount = dictionary["friends_count"] as? Int
+        followerCount = dictionary["followers_count"] as? Int
     }
     
     static let userDidLogoutNotificationName = NSNotification.Name(rawValue: "UserDidLogout")

@@ -102,6 +102,77 @@ class TwitterClient: BDBOAuth1SessionManager {
         })
     }
     
+    func userTimeline(success: @escaping ([Tweet]) -> (), failure: @escaping (Error) -> ()) {
+        userTimeline(userID: 0, olderThan: 0, success: { (tweet: [Tweet]) in
+            success(tweet)
+        }) { (error: Error) in
+            failure(error)
+        }
+    }
+    
+    func userTimeline(userID: Int, success: @escaping ([Tweet]) -> (), failure: @escaping (Error) -> ()) {
+        userTimeline(userID: userID, olderThan: 0, success: { (tweet: [Tweet]) in
+            success(tweet)
+        }) { (error: Error) in
+            failure(error)
+        }
+    }
+    
+    // Gets user tweets posted before / older than tweet |id| specified. If 0, ignores |id| param.
+    func userTimeline(userID: Int, olderThan tweetID: Int, success: @escaping ([Tweet]) -> (), failure: @escaping (Error) -> ()) {
+        var params: [String:Any] = [
+            "count": 20
+        ]
+        if userID > 0 {
+            params["user_id"] = userID
+        }
+        if tweetID > 0 {
+            params["max_id"] = tweetID
+        }
+        get("1.1/statuses/user_timeline.json", parameters: params, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
+            let dictionaries = response as! [NSDictionary]
+            
+            let tweets = Tweet.tweets(from: dictionaries)
+            
+            success(tweets)
+            
+        }, failure: { (task: URLSessionDataTask?, error: Error) in
+            print("error: \(error.localizedDescription)")
+            
+            failure(error)
+        })
+    }
+    
+    func mentionsTimeline(success: @escaping ([Tweet]) -> (), failure: @escaping (Error) -> ()) {
+        mentionsTimeline(olderThan: 0, success: { (tweet: [Tweet]) in
+            success(tweet)
+        }) { (error: Error) in
+            failure(error)
+        }
+    }
+    
+    // Gets tweets posted before / older than tweet |id| specified. If 0, ignores |id| param.
+    func mentionsTimeline(olderThan id: Int, success: @escaping ([Tweet]) -> (), failure: @escaping (Error) -> ()) {
+        var params: [String:Any] = [
+            "count": 20,
+        ]
+        if id > 0 {
+            params["max_id"] = id
+        }
+        get("1.1/statuses/mentions_timeline.json", parameters: params, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
+            let dictionaries = response as! [NSDictionary]
+            
+            let tweets = Tweet.tweets(from: dictionaries)
+            
+            success(tweets)
+            
+        }, failure: { (task: URLSessionDataTask?, error: Error) in
+            print("error: \(error.localizedDescription)")
+            
+            failure(error)
+        })
+    }
+    
     func retweet(id: Int, retweet: Bool, success: @escaping (Tweet) -> (), failure: @escaping (Error) -> ()) {
         let params: [String:Any] = [
             "id" : id

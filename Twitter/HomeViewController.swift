@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate {
+class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, TweetCellDelegate {
     
     var tweets: [Tweet]?
     
@@ -79,6 +79,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         if let tweet = tweets?[indexPath.row] {
             cell.tweet = tweet
+            cell.delegate = self
         }
         
         return cell
@@ -134,6 +135,17 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBAction func onLogOutButton(_ sender: AnyObject) {
         TwitterClient.sharedInstance.logout()
+    }
+    
+    // MARK: - TweetCellDelegate
+    func showProfile(user: User) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let profileViewController = storyboard.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
+        profileViewController.user = user
+        self.navigationController?.pushViewController(profileViewController, animated: true)
+//        self.performSegue(withIdentifier: "HomeToProfile", sender: nil)
+//        self.present(profileViewController, animated:true, completion:nil)
+//        window?.rootViewController = profileViewController // not embedded in nav controller
     }
 
     // MARK: - Navigation

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1D16C2AC1DC711BC0002AFE2 /* InfiniteScrollActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D16C2AB1DC711BC0002AFE2 /* InfiniteScrollActivityView.swift */; };
+		1D6DDDBE1DCF883600E9744F /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6DDDBD1DCF883600E9744F /* ProfileCell.swift */; };
 		1D75FA251DC40D3400DC3B02 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D75FA241DC40D3400DC3B02 /* AppDelegate.swift */; };
 		1D75FA2A1DC40D3400DC3B02 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D75FA281DC40D3400DC3B02 /* Main.storyboard */; };
 		1D75FA2C1DC40D3400DC3B02 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D75FA2B1DC40D3400DC3B02 /* Assets.xcassets */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		1D16C2AB1DC711BC0002AFE2 /* InfiniteScrollActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfiniteScrollActivityView.swift; sourceTree = "<group>"; };
+		1D6DDDBD1DCF883600E9744F /* ProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		1D75FA211DC40D3400DC3B02 /* Twitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Twitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D75FA241DC40D3400DC3B02 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1D75FA291DC40D3400DC3B02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 			children = (
 				1DFE099D1DCEFB9C002D1ED0 /* MenuItemCell.swift */,
 				1DB288B31DC526EF006A15CB /* TweetCell.swift */,
+				1D6DDDBD1DCF883600E9744F /* ProfileCell.swift */,
 				1D16C2AB1DC711BC0002AFE2 /* InfiniteScrollActivityView.swift */,
 			);
 			name = Views;
@@ -293,6 +296,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D6DDDBE1DCF883600E9744F /* ProfileCell.swift in Sources */,
 				1DFE09961DCEB312002D1ED0 /* HamburgerViewController.swift in Sources */,
 				1DFE099E1DCEFB9C002D1ED0 /* MenuItemCell.swift in Sources */,
 				1D7A43CA1DC55F5E0008C85D /* TwitterClient.swift in Sources */,
