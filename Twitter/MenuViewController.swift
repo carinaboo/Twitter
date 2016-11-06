@@ -10,9 +10,15 @@ import UIKit
 
 class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var menuItems: [String]?
-
     @IBOutlet weak var tableView: UITableView!
+    
+    var menuItems: [String]?
+    
+    private var profileNavigationController: UIViewController!
+    private var timelineNavigationController: UIViewController!
+    private var mentionsNavigationController: UIViewController!
+    
+    var viewControllers: [UIViewController] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,12 +29,23 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.dataSource = self
         tableView.delegate = self
         
+        // Automatic cell height based on content
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
         
+        // Clear table background color
         tableView.backgroundView = nil
         tableView.backgroundColor = UIColor.clear
+        
+        // Set table height based on content
         tableView.sizeToFit()
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        profileNavigationController = storyboard.instantiateViewController(withIdentifier: "ProfileNavigationViewController")
+        timelineNavigationController = storyboard.instantiateViewController(withIdentifier: "HomeNavigationViewController")
+        mentionsNavigationController = storyboard.instantiateViewController(withIdentifier: "MentionsNavigationViewController")
+        
+        viewControllers.append(contentsOf: [profileNavigationController, timelineNavigationController, mentionsNavigationController])
     }
 
     override func didReceiveMemoryWarning() {
