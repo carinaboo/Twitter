@@ -20,6 +20,8 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     var viewControllers: [UIViewController] = []
     
+    var hamburgerViewController: HamburgerViewController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -46,6 +48,8 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         mentionsNavigationController = storyboard.instantiateViewController(withIdentifier: "MentionsNavigationViewController")
         
         viewControllers.append(contentsOf: [profileNavigationController, timelineNavigationController, mentionsNavigationController])
+        
+        hamburgerViewController.contentViewController = timelineNavigationController
     }
 
     override func didReceiveMemoryWarning() {
@@ -72,6 +76,8 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //Change the selected background view of the cell.
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        hamburgerViewController.contentViewController = viewControllers[indexPath.row]
     }
 
     /*

@@ -26,11 +26,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let hamburgerViewController = storyboard.instantiateViewController(withIdentifier: "HamburgerViewController") as! HamburgerViewController
             window?.rootViewController = hamburgerViewController
             
-//            let hamburgerViewController = window?.rootViewController as! HamburgerViewController
-//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let menuViewController = storyboard.instantiateViewController(withIdentifier: "MenuViewController")
+            let menuViewController = storyboard.instantiateViewController(withIdentifier: "MenuViewController")  as! MenuViewController
+            
+            menuViewController.hamburgerViewController = hamburgerViewController
             
             hamburgerViewController.menuViewController = menuViewController
+            
         } else {
             print("there is no user")
         }
