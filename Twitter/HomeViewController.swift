@@ -113,8 +113,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         loadingMoreView?.frame = frame
         loadingMoreView!.startAnimating()
         
-        let id = tweets?.last?.id
-        TwitterClient.sharedInstance.homeTimeline(olderThan: id!, success: { (tweets: [Tweet]) in
+        let id = tweets?.last?.id ?? 0
+        TwitterClient.sharedInstance.homeTimeline(olderThan: id, success: { (tweets: [Tweet]) in
             // Update flag
             self.isMoreDataLoading = false
             

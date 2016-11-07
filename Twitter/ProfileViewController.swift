@@ -12,6 +12,10 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
 
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var coverImageView: UIImageView!
+    @IBOutlet weak var coverHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var coverTopConstraint: NSLayoutConstraint!
+    
     var user: User?
     var tweets: [Tweet]?
     
@@ -32,6 +36,11 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             // Set nav bar title as user's name
             if let name = user.name {
                 self.title = name
+            }
+            
+            // Cover photo
+            if let coverURL = user.profileBackgroundURL {
+                coverImageView.setImageWith(coverURL)
             }
         }
         TwitterClient.sharedInstance.userTimeline(userID: userID, success: { (tweets: [Tweet]) in

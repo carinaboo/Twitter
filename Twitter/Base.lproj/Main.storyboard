@@ -341,6 +341,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="IeI-Tl-QPn"/>
                     <connections>
+                        <outlet property="coverHeightConstraint" destination="6Bg-iw-NcP" id="UUg-mQ-zde"/>
+                        <outlet property="coverImageView" destination="qD0-S5-lxT" id="eNm-9c-VOI"/>
+                        <outlet property="coverTopConstraint" destination="h5b-w6-oHB" id="yae-4g-Ntb"/>
                         <outlet property="tableView" destination="hbp-qW-y5a" id="8Re-BT-DYV"/>
                     </connections>
                 </viewController>
