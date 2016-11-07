@@ -29,6 +29,10 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
         
+        // Clear table background color
+        tableView.backgroundView = nil
+        tableView.backgroundColor = UIColor.clear
+        
         // Get initial tweets
         var userID = 0
         if let user = user {
@@ -71,6 +75,9 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             }
             cell.user = user
             
+            // Clear cell color for profile cell
+            cell.backgroundColor = UIColor.clear
+            
             return cell
         }
         
@@ -96,6 +103,25 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             let profileViewController = storyboard.instantiateViewController(withIdentifier: "ProfileViewController") as! ProfileViewController
             profileViewController.user = user
             self.navigationController?.pushViewController(profileViewController, animated: true)
+        }
+    }
+    
+    // MARK: - Scroll
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let scrollContentOffset = scrollView.contentOffset.y
+        
+        // User scrolling down
+        if scrollContentOffset < 0 {
+            self.coverHeightConstraint.constant = 80 - scrollContentOffset
+            self.coverTopConstraint.constant = 64
+            self.view.layoutIfNeeded()
+            print("down: \(scrollContentOffset)  height: \(coverHeightConstraint.constant)  top: \(coverTopConstraint.constant)")
+        } else {
+        // User scrolling up
+            self.coverHeightConstraint.constant = 80
+            self.coverTopConstraint.constant = 64 - (scrollContentOffset / 3)
+            self.view.layoutIfNeeded()
+            print("up: \(scrollContentOffset)  height: \(coverHeightConstraint.constant)  top: \(coverTopConstraint.constant)")
         }
     }
 

@@ -2,7 +2,7 @@
 
 **Twitter** is a basic twitter app to read and compose tweets from the [Twitter API](https://apps.twitter.com/).
 
-Time spent: **11** hours spent in total
+Time spent: **20** hours spent in total
 
 ## User Stories
 
@@ -20,10 +20,10 @@ The following **required** functionality is completed:
 
 The following **optional** features are implemented:
 
-- [ ] Profile Page
-   - [ ] Implement the paging view for the user description.
+- [x] Profile Page
+   - [x] Implement the paging view for the user description.
    - [ ] As the paging view moves, increase the opacity of the background screen. See the actual Twitter app for this effect
-   - [ ] Pulling down the profile page should blur and resize the header image.
+   - [x] Pulling down the profile page should blur and resize the header image.
 - [ ] Account switching
    - [ ] Long press on tab bar to bring up Account view with animation
    - [ ] Tap account to switch to
@@ -45,13 +45,17 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src='https://raw.githubusercontent.com/carinaboo/twitter/master/Demo/TwitterV2.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://raw.githubusercontent.com/carinaboo/twitter/master/Demo/TwitterV4.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
 Describe any challenges encountered while building the app.
+
+Ran into a lot of issues with storyboard and animation. Git reseting to an earlier commmit that I know had correct view constraints suddenly messed up entire screens. It'd run but all the constraints weren't modifiable--the views weren't showing up at all either in Storyboard. Need betters ways to debug what happened and fix it. Ended up rebuilding screens, reseting constraints, and connecting them back to the view controllers.
+
+Also animation. Still not sure why in a UITableViewCell, self.layoutIfNeeded() within a UIView.animate call worked on your computer but not mine. I also tried on Xcode 8.1, nothing changed. Also thought that laying out the cell would call layout on it's children (which includes the cell's contentView that I needed to call to fix it.)
 
 ## License
 
