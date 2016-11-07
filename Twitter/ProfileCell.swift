@@ -22,6 +22,8 @@ class ProfileCell: UITableViewCell {
     
     @IBOutlet weak var pageControl: UIPageControl!
     
+    @IBOutlet weak var namePage: UIView!
+
     @IBOutlet weak var namePageLeadingConstraint: NSLayoutConstraint!
     
     var user: User! {
@@ -38,6 +40,9 @@ class ProfileCell: UITableViewCell {
             nameLabel.text = user.name
             if let screenname = user.screenname {
                 userNameLabel.text = "@\(screenname)"
+            }
+            if let description = user.tagline {
+                descriptionLabel.text = "@\(description)"
             }
             tweetCountLabel.text = "\(user.tweetCount ?? 0)"
             followingCountLabel.text = "\(user.followingCount ?? 0)"
@@ -56,4 +61,17 @@ class ProfileCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    @IBAction func onPageControlValueChanged(_ sender: UIPageControl) {
+        if sender.currentPage == 0 {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.namePageLeadingConstraint.constant = 0
+                self.layoutIfNeeded()
+            })
+        } else {
+            UIView.animate(withDuration: 0.2, animations: {
+                self.namePageLeadingConstraint.constant = -self.nameLabel.bounds.size.width - 32
+                self.layoutIfNeeded()
+            })
+        }
+    }
 }

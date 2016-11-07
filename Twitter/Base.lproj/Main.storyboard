@@ -91,7 +91,11 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zJB-gh-kky" userLabel="Mask View">
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
-                                                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="mWh-an-TE8"/>
+                                                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="mWh-an-TE8">
+                                                    <connections>
+                                                        <action selector="onPageControlValueChanged:" destination="da8-3W-44z" eventType="valueChanged" id="4h0-9U-EfR"/>
+                                                    </connections>
+                                                </pageControl>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="49W-We-tdi">
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -177,13 +181,12 @@
                                             <constraints>
                                                 <constraint firstItem="hRK-fx-RHM" firstAttribute="top" secondItem="nes-hw-51L" secondAttribute="bottom" constant="5" id="1QA-Wl-aXn"/>
                                                 <constraint firstItem="hRK-fx-RHM" firstAttribute="leading" secondItem="nes-hw-51L" secondAttribute="leading" id="3EK-T8-Y1Q"/>
-                                                <constraint firstItem="qKS-Ri-Apg" firstAttribute="leading" secondItem="ATv-eq-OGn" secondAttribute="leadingMargin" id="3gw-VM-eRn"/>
                                                 <constraint firstItem="49W-We-tdi" firstAttribute="top" secondItem="ATv-eq-OGn" secondAttribute="top" id="6Wt-0c-Cqw"/>
-                                                <constraint firstItem="Q4W-bV-OqF" firstAttribute="leading" secondItem="ATv-eq-OGn" secondAttribute="leadingMargin" constant="15" id="6zJ-rs-O5q"/>
                                                 <constraint firstItem="zJB-gh-kky" firstAttribute="top" secondItem="ATv-eq-OGn" secondAttribute="top" constant="80" id="BtM-gf-Mkc"/>
                                                 <constraint firstItem="nes-hw-51L" firstAttribute="leading" secondItem="ATv-eq-OGn" secondAttribute="leading" constant="15" id="G6c-Wb-qm3"/>
                                                 <constraint firstItem="mWh-an-TE8" firstAttribute="top" secondItem="ATv-eq-OGn" secondAttribute="topMargin" constant="80" id="PE7-Mi-h1Z"/>
                                                 <constraint firstItem="boT-t0-lhf" firstAttribute="top" secondItem="Q4W-bV-OqF" secondAttribute="bottom" constant="8" id="SWz-EO-ER0"/>
+                                                <constraint firstItem="Q4W-bV-OqF" firstAttribute="top" secondItem="49W-We-tdi" secondAttribute="bottom" constant="64" id="VCH-Kc-t6e"/>
                                                 <constraint firstItem="fQN-jw-COb" firstAttribute="leading" secondItem="6JM-XT-T4Y" secondAttribute="leading" id="Wg1-0P-JoL"/>
                                                 <constraint firstItem="fQN-jw-COb" firstAttribute="bottom" secondItem="nes-hw-51L" secondAttribute="bottom" id="XXQ-1I-2XO"/>
                                                 <constraint firstItem="6JM-XT-T4Y" firstAttribute="leading" secondItem="hRK-fx-RHM" secondAttribute="trailing" constant="25" id="YVg-un-FOM"/>
@@ -196,10 +199,11 @@
                                                 <constraint firstAttribute="bottom" secondItem="hRK-fx-RHM" secondAttribute="bottom" constant="15" id="e64-al-zUe"/>
                                                 <constraint firstItem="boT-t0-lhf" firstAttribute="leading" secondItem="qKS-Ri-Apg" secondAttribute="trailing" id="hQg-y7-1pl"/>
                                                 <constraint firstAttribute="bottom" secondItem="zJB-gh-kky" secondAttribute="bottom" id="jt8-VU-GoO"/>
+                                                <constraint firstItem="qKS-Ri-Apg" firstAttribute="leading" secondItem="ATv-eq-OGn" secondAttribute="leading" id="kgG-a0-Yfr"/>
                                                 <constraint firstItem="boT-t0-lhf" firstAttribute="width" secondItem="49W-We-tdi" secondAttribute="width" id="mck-qu-h8l"/>
                                                 <constraint firstItem="f6e-lj-PHv" firstAttribute="leading" secondItem="XjP-2z-K0c" secondAttribute="leading" id="ppX-G3-9Mw"/>
-                                                <constraint firstItem="Q4W-bV-OqF" firstAttribute="top" secondItem="ATv-eq-OGn" secondAttribute="topMargin" constant="64" id="prU-OW-3Uc"/>
                                                 <constraint firstItem="XjP-2z-K0c" firstAttribute="bottom" secondItem="6JM-XT-T4Y" secondAttribute="bottom" id="ptz-0v-kBc"/>
+                                                <constraint firstItem="Q4W-bV-OqF" firstAttribute="leading" secondItem="ATv-eq-OGn" secondAttribute="leading" constant="15" id="r0y-45-2Sy"/>
                                                 <constraint firstItem="qKS-Ri-Apg" firstAttribute="top" secondItem="Q4W-bV-OqF" secondAttribute="bottom" id="rxD-fm-F9o"/>
                                                 <constraint firstItem="XjP-2z-K0c" firstAttribute="leading" secondItem="6JM-XT-T4Y" secondAttribute="trailing" constant="25" id="u8O-WD-REZ"/>
                                                 <constraint firstAttribute="trailing" secondItem="49W-We-tdi" secondAttribute="trailing" id="uep-wb-mA6"/>
@@ -213,7 +217,8 @@
                                             <outlet property="followerCountLabel" destination="f6e-lj-PHv" id="tP5-Qr-KZl"/>
                                             <outlet property="followingCountLabel" destination="fQN-jw-COb" id="rLZ-dg-WTv"/>
                                             <outlet property="nameLabel" destination="7uo-ha-zv6" id="juF-Yq-Kvx"/>
-                                            <outlet property="namePageLeadingConstraint" destination="3gw-VM-eRn" id="Ehq-sZ-ZNX"/>
+                                            <outlet property="namePage" destination="qKS-Ri-Apg" id="6FB-IW-PTt"/>
+                                            <outlet property="namePageLeadingConstraint" destination="kgG-a0-Yfr" id="d6D-3X-Bis"/>
                                             <outlet property="pageControl" destination="mWh-an-TE8" id="N0P-TO-XNa"/>
                                             <outlet property="profileImageView" destination="Q4W-bV-OqF" id="ETS-Jn-6ES"/>
                                             <outlet property="tweetCountLabel" destination="nes-hw-51L" id="31h-W1-qGa"/>
