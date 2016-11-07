@@ -49,6 +49,15 @@ class HamburgerViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        if menuViewController == nil {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let menuViewController = storyboard.instantiateViewController(withIdentifier: "MenuViewController")  as! MenuViewController
+            
+            menuViewController.hamburgerViewController = self
+            
+            self.menuViewController = menuViewController
+
+        }
     }
 
     override func didReceiveMemoryWarning() {
