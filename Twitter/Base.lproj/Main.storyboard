@@ -208,6 +208,17 @@
                                                 <constraint firstAttribute="trailing" secondItem="zJB-gh-kky" secondAttribute="trailing" id="zcj-Hh-Wsy"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="descriptionLabel" destination="9Lr-3c-r7V" id="3FK-cj-b3R"/>
+                                            <outlet property="followerCountLabel" destination="f6e-lj-PHv" id="tP5-Qr-KZl"/>
+                                            <outlet property="followingCountLabel" destination="fQN-jw-COb" id="rLZ-dg-WTv"/>
+                                            <outlet property="nameLabel" destination="7uo-ha-zv6" id="juF-Yq-Kvx"/>
+                                            <outlet property="namePageLeadingConstraint" destination="3gw-VM-eRn" id="Ehq-sZ-ZNX"/>
+                                            <outlet property="pageControl" destination="mWh-an-TE8" id="N0P-TO-XNa"/>
+                                            <outlet property="profileImageView" destination="Q4W-bV-OqF" id="ETS-Jn-6ES"/>
+                                            <outlet property="tweetCountLabel" destination="nes-hw-51L" id="31h-W1-qGa"/>
+                                            <outlet property="userNameLabel" destination="jr2-42-0Ev" id="zmv-ce-BPU"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TweetCell" rowHeight="145" id="0b9-ef-r1r" customClass="TweetCell" customModule="Twitter" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="330" width="375" height="145"/>

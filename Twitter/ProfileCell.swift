@@ -10,16 +10,19 @@ import UIKit
 
 class ProfileCell: UITableViewCell {
 
-    @IBOutlet weak var coverPhotoImageView: UIImageView!
-    @IBOutlet weak var profileContainerView: UIView!
-    
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
     
+    @IBOutlet weak var descriptionLabel: UILabel!
+    
     @IBOutlet weak var tweetCountLabel: UILabel!
     @IBOutlet weak var followingCountLabel: UILabel!
     @IBOutlet weak var followerCountLabel: UILabel!
+    
+    @IBOutlet weak var pageControl: UIPageControl!
+    
+    @IBOutlet weak var namePageLeadingConstraint: NSLayoutConstraint!
     
     var user: User! {
         didSet {
