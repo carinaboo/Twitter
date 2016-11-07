@@ -54,11 +54,6 @@ class ProfileCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected stat
-//        This animate works here
-//        UIView.animate(withDuration: 0.2, animations: {
-//            self.namePageLeadingConstraint.constant = self.namePageHiddenLeadingConstraint
-//            self.layoutIfNeeded()
-//        })
     }
 
     @IBAction func onPageControlValueChanged(_ sender: UIPageControl) {
@@ -66,13 +61,13 @@ class ProfileCell: UITableViewCell {
             print("current page 0")
             UIView.animate(withDuration: 0.2, animations: {
                 self.namePageLeadingConstraint.constant = 0
-                self.layoutIfNeeded()
+                self.contentView.layoutIfNeeded()
             })
         } else {
             print("current page 1")
             UIView.animate(withDuration: 0.2, animations: {
                 self.namePageLeadingConstraint.constant = self.namePageHiddenLeadingConstraint
-                self.layoutIfNeeded()
+                self.contentView.layoutIfNeeded()
             })
         }
     }

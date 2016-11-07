@@ -91,7 +91,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zJB-gh-kky" userLabel="Mask View">
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
-                                                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="2" currentPage="1" translatesAutoresizingMaskIntoConstraints="NO" id="mWh-an-TE8">
+                                                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="mWh-an-TE8">
                                                     <color key="pageIndicatorTintColor" red="0.4742781881" green="0.58413403809999997" blue="0.68858173079999996" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="currentPageIndicatorTintColor" red="0.1176470588" green="0.55294117649999996" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <connections>
@@ -117,7 +117,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.1176470588" green="0.55294117649999996" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstItem="7uo-ha-zv6" firstAttribute="leading" secondItem="qKS-Ri-Apg" secondAttribute="leading" constant="15" id="1eY-AY-KUu"/>
                                                         <constraint firstItem="jr2-42-0Ev" firstAttribute="top" secondItem="7uo-ha-zv6" secondAttribute="bottom" constant="3" id="48j-KW-Jcr"/>
@@ -135,7 +135,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="1" green="0.43529412150000002" blue="0.81176471709999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="9Lr-3c-r7V" secondAttribute="bottom" constant="8" id="EYJ-hE-rzn"/>
                                                         <constraint firstItem="9Lr-3c-r7V" firstAttribute="leading" secondItem="boT-t0-lhf" secondAttribute="leading" constant="15" id="IjD-wZ-Cjt"/>
@@ -201,7 +201,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="hRK-fx-RHM" secondAttribute="bottom" constant="15" id="e64-al-zUe"/>
                                                 <constraint firstItem="boT-t0-lhf" firstAttribute="leading" secondItem="qKS-Ri-Apg" secondAttribute="trailing" id="hQg-y7-1pl"/>
                                                 <constraint firstAttribute="bottom" secondItem="zJB-gh-kky" secondAttribute="bottom" id="jt8-VU-GoO"/>
-                                                <constraint firstItem="qKS-Ri-Apg" firstAttribute="leading" secondItem="ATv-eq-OGn" secondAttribute="leading" constant="-75" id="kgG-a0-Yfr"/>
+                                                <constraint firstItem="qKS-Ri-Apg" firstAttribute="leading" secondItem="ATv-eq-OGn" secondAttribute="leading" id="kgG-a0-Yfr"/>
                                                 <constraint firstItem="boT-t0-lhf" firstAttribute="width" secondItem="49W-We-tdi" secondAttribute="width" id="mck-qu-h8l"/>
                                                 <constraint firstItem="f6e-lj-PHv" firstAttribute="leading" secondItem="XjP-2z-K0c" secondAttribute="leading" id="ppX-G3-9Mw"/>
                                                 <constraint firstItem="XjP-2z-K0c" firstAttribute="bottom" secondItem="6JM-XT-T4Y" secondAttribute="bottom" id="ptz-0v-kBc"/>
