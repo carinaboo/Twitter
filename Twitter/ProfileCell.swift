@@ -21,17 +21,12 @@ class ProfileCell: UITableViewCell {
     @IBOutlet weak var followerCountLabel: UILabel!
     
     @IBOutlet weak var pageControl: UIPageControl!
-    
-    @IBOutlet weak var namePage: UIView!
 
     @IBOutlet weak var namePageLeadingConstraint: NSLayoutConstraint!
+    var namePageHiddenLeadingConstraint: CGFloat = CGFloat(-375)
     
     var user: User! {
         didSet {
-            // Not actually the cover photos
-//            if let profileBackgroundURL = user.profileBackgroundURL {
-//                coverPhotoImageView.setImageWith(profileBackgroundURL)
-//            }
             if let profileImageURL = user.profileURL {
                 profileImageView.setImageWith(profileImageURL)
                 profileImageView.layer.cornerRadius = 4.0;
@@ -58,18 +53,25 @@ class ProfileCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+        // Configure the view for the selected stat
+//        This animate works here
+//        UIView.animate(withDuration: 0.2, animations: {
+//            self.namePageLeadingConstraint.constant = self.namePageHiddenLeadingConstraint
+//            self.layoutIfNeeded()
+//        })
     }
 
     @IBAction func onPageControlValueChanged(_ sender: UIPageControl) {
         if sender.currentPage == 0 {
+            print("current page 0")
             UIView.animate(withDuration: 0.2, animations: {
                 self.namePageLeadingConstraint.constant = 0
                 self.layoutIfNeeded()
             })
         } else {
+            print("current page 1")
             UIView.animate(withDuration: 0.2, animations: {
-                self.namePageLeadingConstraint.constant = -self.nameLabel.bounds.size.width - 32
+                self.namePageLeadingConstraint.constant = self.namePageHiddenLeadingConstraint
                 self.layoutIfNeeded()
             })
         }

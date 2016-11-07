@@ -61,13 +61,13 @@ class HamburgerViewController: UIViewController {
         let velocity = sender.velocity(in: view)
         
         if sender.state == .began {
-            print("began: \(translation)")
+//            print("began: \(translation)")
             originalLeftMargin = leftMarginConstraint.constant
         } else if sender.state == .changed {
-            print("changed: \(translation)")
+//            print("changed: \(translation)")
             leftMarginConstraint.constant = originalLeftMargin + translation.x
         } else if sender.state == .ended {
-            print("end: \(translation)")
+//            print("end: \(translation)")
             UIView.animate(withDuration: 0.2, animations: {
                 if velocity.x > 0 {
                     self.leftMarginConstraint.constant = self.view.frame.size.width - 50
